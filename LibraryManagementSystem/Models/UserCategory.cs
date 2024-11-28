@@ -6,7 +6,7 @@ namespace LibraryManagementSystem.Models
     {
         [Key]
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
         public ICollection<User> User { get; set; }
     }
 }

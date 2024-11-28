@@ -1,7 +1,11 @@
-﻿namespace LibraryManagementSystem.Models
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
+namespace LibraryManagementSystem.Models
 {
     public class Transactions
     {
+        [Key]
         public int TransactionID { get; set; }
         public int BookID { get; set; }
         public int MemberID { get; set; }

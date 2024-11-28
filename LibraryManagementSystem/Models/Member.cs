@@ -1,7 +1,11 @@
-﻿namespace LibraryManagementSystem.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LibraryManagementSystem.Models
 {
     public class Member
+
     {
+        [Key]
         public int MemberID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
