@@ -10,6 +10,7 @@ namespace LibraryManagementSystem.Models
         public int AuthorID { get; set; }
         public int PublisherID { get; set; }
         public string? ISBN { get; set; }
+
         public int CategoryID { get; set; }
         public string? Language { get; set; }
         public int PublicationYear { get; set; }

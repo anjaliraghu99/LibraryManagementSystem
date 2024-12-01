@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LibraryManagementSystem.styles.css" asp-append-version="true" />
+
+    <script src="https://kendo.cdn.telerik.com/2023.2.829/mjs/kendo.all.js" type="module"></script>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/6.2.0/default/default-main.css" />
+    <link href="https://kendo.cdn.telerik.com/themes/6.7.0/default/default-main.css" rel="stylesheet" />
+    <script src="https://kendo.cdn.telerik.com/2023.1.314/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2023.1.314/js/kendo.all.min.js"></script>
+
+  
 </head>
 <body>
     <header>
@@ -25,6 +33,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AdminDashboard">AdminDashboard</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -37,9 +48,9 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+       @*  <div class="container">
             &copy; 2024 - LibraryManagementSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        </div> *@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,166 @@
+﻿@model LibraryManagementSystem.Models.Book
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+</head>
+<body>
+    @if (@ViewBag.Action == "Create")
+    {
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-controller="Home" asp-action="BookActions" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="BookID" class="control-label"></label>
+                    <input asp-for="BookID" class="form-control" />
+                    <span asp-validation-for="BookID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Language" class="control-label"></label>
+                    <input asp-for="Language" class="form-control" />
+                    <span asp-validation-for="Language" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CopiesAvailable" class="control-label"></label>
+                    <input asp-for="CopiesAvailable" class="form-control" />
+                    <span asp-validation-for="CopiesAvailable" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> price</label>
+                    <input asp-for="ISBN" class="form-control" />
+                    <span asp-validation-for="ISBN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label class="control-label"> Category</label>
+                    <input asp-for="CategoryID" id="CategoryID" class="form-control" type="text">
+                        <span asp-validation-for="CategoryID" class="text-danger"></span>
+                </div>
+                    <div class="form-group">
+                        <label class="control-label"> Author</label>
+                        <input asp-for="AuthorID" id="AuthorID" class="form-control" type="text">
+                        <span asp-validation-for="AuthorID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"> Publisher</label>
+                        <input asp-for="PublisherID" id="PublisherID" class="form-control" type="text">
+                        <span asp-validation-for="PublisherID" class="text-danger"></span>
+                    </div>
+                <input type="hidden" name="DataAction" value=@ViewBag.Action />
+                <input type="submit" value="Create" class="btn btn-primary" />
+
+            </form>
+        </div>
+    </div>
+    }
+    else{
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-controller="Home" asp-action="BookActions" method="post">
+                <div class="form-group">
+                    <label asp-for="BookID"></label>
+                    <input asp-for="BookID" value="@Model.BookID" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Language"></label>
+                    <input asp-for="Language" value="@Model.Language" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" value="@Model.Title" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CopiesAvailable"></label>
+                    <input asp-for="CopiesAvailable" value="@Model.CopiesAvailable" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> price</label>
+                    <input asp-for="ISBN" value="@Model.ISBN" class="form-control" />
+                </div>
+                <div class="form-group">
+                        <label class="control-label"> Category</label>
+                        <input asp-for="CategoryID" id="CategoryID" class="form-control" type="text">
+                        <span asp-validation-for="ISBN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                        <label class="control-label"> Author</label>
+                        <input asp-for="AuthorID" id="AuthorID" class="form-control" type="text">
+                        <span asp-validation-for="AuthorID" class="text-danger"></span>
+                 </div>
+                    <div class="form-group">
+                        <label class="control-label"> Publisher</label>
+                        <input asp-for="PublisherID" id="PublisherID" class="form-control" type="text">
+                        <span asp-validation-for="PublisherID" class="text-danger"></span>
+                    </div>
+                <input type="hidden" name="DataAction" value=@ViewBag.Action />
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </form>
+
+        </div>
+    </div>
+    }
+    <script>
+        $.get("/Home/GetCategoryData/", function (data) {
+            console.log(data); // Check the structure of the response
+        });
+
+        $(document).ready(function () {
+            $("#CategoryID").kendoDropDownList({
+                optionLabel: "Select an category",
+                        dataValueField: "categoryID",
+                dataTextField: "categoryName",
+                dataSource: {
+                    transport: {
+                        read: {
+                            dataType: "json",
+                            url: "/Home/GetCategoryData?categoryName=" + "category",
+                        }
+                    }
+                }
+            }).data("kendoDropDownList");
+
+            $("#AuthorID").kendoDropDownList({
+                optionLabel: "Select an Author",
+                  dataValueField: "authorID",
+                dataTextField: "name",
+                dataSource: {
+                    transport: {
+                        read: {
+                            dataType: "json",
+                            url: "/Home/GetCategoryData?categoryName=" + "Author",
+                        }
+                    }
+                }
+            }).data("kendoDropDownList");
+
+            $("#PublisherID").kendoDropDownList({
+                optionLabel: "Select an Publisher",
+                        dataValueField: "publisherID",
+                dataTextField: "name",
+                dataSource: {
+                    transport: {
+                        read: {
+                            dataType: "json",
+                            url: "/Home/GetCategoryData?categoryName=" + "Publisher",
+                        }
+                    }
+                }
+            }).data("kendoDropDownList");
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
